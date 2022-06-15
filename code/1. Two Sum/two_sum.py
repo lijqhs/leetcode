@@ -2,14 +2,14 @@ import time
 
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        wait_dict = {}
+        cache_dict = {}
 
         for i in range(len(nums)):
             res = target - nums[i]
-            if res in wait_dict:
-                return [wait_dict[res], i]
+            if res in cache_dict:
+                return [cache_dict[res], i]
             else:
-                wait_dict[nums[i]] = i
+                cache_dict[nums[i]] = i
             
         return []
 
