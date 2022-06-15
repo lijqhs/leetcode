@@ -34,7 +34,8 @@ You can return the answer in any order.
 
 ### Solution 1:
 
-Use brute force with Java code:
+**Brute force** in Java:
+
 
 ```java
 class Solution {
@@ -66,71 +67,25 @@ class Solution {
 
 ### Solution 2
 
+**Hash table solution**
+
 Python in O(n) time.
 
 ```python
-class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
-        nums_dict = dict()
-
-        print("input: ", end='')
-
-        for i in range(len(nums)):
-            nums_index = nums_dict.get(nums[i], [])
-            nums_index.append(i)
-            nums_dict.update({nums[i]: nums_index})
-            print(nums[i], end=' ')
-
-
-        print("target: ", end='')
-        print(target)
-
-        print("dict: " + str(nums_dict))
-
-        for i in range(len(nums)):
-            res = target - nums[i]
-            res_ind = nums_dict.get(target - nums[i], [])
-            if res_ind:
-                if nums[i] == res:
-                    if len(res_ind) < 2:
-                        continue
-                    else:
-                        return res_ind[:2]
-                else:
-                    return [i] + res_ind[:1]
-            
-        return []
-
-
-if __name__ == '__main__':
-    s = Solution()
-    print(s.twoSum([2,7,11,15], 9))
-    print()
-    print(s.twoSum([3,2,4], 6))
-    print()
-    print(s.twoSum([3, 3], 6))
-```
-
-
-### Solution 3
-
-Python in O(n) time, another version.
-
-```python
 import time
+from typing import List
 
 class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
-        wait_dict = {}
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        cache_dict = {}
 
         for i in range(len(nums)):
             res = target - nums[i]
-            if res in wait_dict:
-                return [wait_dict[res], i]
+            if res in cache_dict:
+                return [cache_dict[res], i]
             else:
-                wait_dict[nums[i]] = i
+                cache_dict[nums[i]] = i
             
-        return []
 
 
 if __name__ == '__main__':

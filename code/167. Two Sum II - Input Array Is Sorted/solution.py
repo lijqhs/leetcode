@@ -6,6 +6,10 @@ import math
 
 # base 
 class Solution:
+    """
+    hash table solution
+    """
+
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         cache_dict = {}
 
@@ -21,6 +25,8 @@ class Solution:
 
 class Solution2:
     """
+    binary search solution
+
     https://en.wikipedia.org/wiki/Binary_search_algorithm
     """ 
 
@@ -52,7 +58,7 @@ class Solution2:
         
 class Solution3:
     """
-    https://en.wikipedia.org/wiki/Binary_search_algorithm
+    binary search solution
 
     put binary search in the loop
     """
@@ -75,7 +81,7 @@ class Solution3:
 
 class Solution33:
     """
-    https://en.wikipedia.org/wiki/Binary_search_algorithm
+    binary search solution
 
     put binary search in the loop
     """
@@ -103,7 +109,7 @@ class Solution33:
 
 class Solution333:
     """
-    https://en.wikipedia.org/wiki/Binary_search_algorithm
+    binary search solution
 
     put binary search in the loop
     """
@@ -133,7 +139,7 @@ class Solution333:
 
 class Solution4:
     """
-    two pointers
+    two-pointer solution
     """
 
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
@@ -147,25 +153,6 @@ class Solution4:
                 lo += 1
             else:
                 hi -= 1
-
-
-
-class Solution5:
-    """
-    two pointers
-    """
-
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        lo = 0
-        hi = len(numbers) - 1
-
-        while numbers[lo] + numbers[hi] != target:
-            if (numbers[lo] + numbers[hi] < target):
-                lo += 1
-            else:
-                hi -= 1
-
-        return [lo + 1, hi + 1]
 
 
 

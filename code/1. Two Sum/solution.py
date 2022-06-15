@@ -1,7 +1,8 @@
 import time
+from typing import List
 
 class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         cache_dict = {}
 
         for i in range(len(nums)):
@@ -11,10 +12,6 @@ class Solution:
             else:
                 cache_dict[nums[i]] = i
             
-        return []
-
-
-
 
 
 if __name__ == '__main__':

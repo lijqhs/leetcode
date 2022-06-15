@@ -31,6 +31,10 @@ def twoSum(self, nums: list[int], target: int) -> list[int]:
 <br/>
 
 
+## [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+
+
+
 
 ## [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
@@ -40,7 +44,8 @@ We can also solve this problem using hash table approach (see [1. Two Sum](#1-tw
 
 - Time complexity: O(N)
 - Space complexity: O(N)
-- 
+
+
 **Binary search approach**
 
 Since the input array is sorted, we can easily think of the binary search method, which costs less space.
