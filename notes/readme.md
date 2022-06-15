@@ -2,13 +2,12 @@
 
 
 
-## 1. Two Sum
+## [1. Two Sum](https://leetcode.com/problems/two-sum/)
 
-Hash table approach
+**Hash table approach**
 
 - Time complexity: O(N)
 - Space complexity: O(N)
-
 
 
 ```python
@@ -22,6 +21,16 @@ def twoSum(self, nums: list[int], target: int) -> list[int]:
         else:
             cache_dict[nums[i]] = i
 ```
+
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+
 
 ## [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
@@ -58,7 +67,9 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
 ```
 
 <details>
-<summary>idea behind the binary search</summary>
+
+<summary>Ideas to improve the performance: </summary>
+
 
 > In the binary search approach, we iterate from left to right with `i` and search for `target-numbers[i]` within all numbers to the right of number `i` by binary search. 
 > 
@@ -98,7 +109,7 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
 > 
 > As `i` iterating through number **1**s, and the while loop doing the futile binary search, `hi` is just waiting at the position of number **13**. 
 > 
-> So, the usage of the binary search for this problem can be demoted to some pointer, which I call it lazy pointer `j`, starting from the rightmost, recording the possible position for `target-numbers[i]`. With this idea, we can get the two-pointer approach.
+> So, the usage of the binary search for this problem can be demoted to some pointer, which I call it lazy pointer `j`, starting from the rightmost, recording the possible position for `target-numbers[i]`. With this idea, we get the two-pointer approach.
 
 </details>
 
@@ -125,4 +136,12 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
 ```
 
 
+
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
 

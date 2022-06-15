@@ -2,7 +2,7 @@
 git add .
 
 # Commit changes.
-msg="update notes $(date)"
+msg="update $(date)"
 if [ -n "$*" ]; then
 	msg="$*"
 fi
