@@ -11,15 +11,16 @@
 
 
 ```python
-def twoSum(self, nums: list[int], target: int) -> list[int]:
-    cache_dict = {}
+class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        cache_dict = {}
 
-    for i in range(len(nums)):
-        res = target - nums[i]
-        if res in cache_dict:
-            return [cache_dict[res], i]
-        else:
-            cache_dict[nums[i]] = i
+        for i in range(len(nums)):
+            res = target - nums[i]
+            if res in cache_dict:
+                return [cache_dict[res], i]
+            else:
+                cache_dict[nums[i]] = i
 ```
 
 
@@ -34,39 +35,66 @@ def twoSum(self, nums: list[int], target: int) -> list[int]:
 ## [2. Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
 
 ```python
-def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-    node = ListNode()
-    root = node
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        node = ListNode()
+        root = node
 
-    if not l1:
-        return l2
-    if not l2:
-        return l1
-    
-    node.val += l1.val + l2.val
-    carry = node.val // 10
-    node.val = node.val % 10
-    l1 = l1.next
-    l2 = l2.next
-
-    while l1 or l2 or carry > 0:
-        node.next = ListNode(carry)
-        node = node.next
-
-        if l1:
-            node.val += l1.val
-            l1 = l1.next
-
-        if l2:
-            node.val += l2.val
-            l2 = l2.next
-
+        if not l1:
+            return l2
+        if not l2:
+            return l1
+        
+        node.val += l1.val + l2.val
         carry = node.val // 10
         node.val = node.val % 10
+        l1 = l1.next
+        l2 = l2.next
 
-    return root
+        while l1 or l2 or carry > 0:
+            node.next = ListNode(carry)
+            node = node.next
+
+            if l1:
+                node.val += l1.val
+                l1 = l1.next
+
+            if l2:
+                node.val += l2.val
+                l2 = l2.next
+
+            carry = node.val // 10
+            node.val = node.val % 10
+
+        return root
 ```
 
+## [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+Use one single pointer iterate through every char of the string, and with variable `start` recording the current substring without repeat char. Keep every char and its position in hash table for fast search.
+
+Whenever encountering a repeat char, all we need is to update the start of the substring to be the next position of the repeat char (previous one). Anyway if this position is less than `start`, we won't update start (won't go back). 
+
+That is to say, only the repeat char in the range of substring is what we care about, which will be the pivot point for updating `start`. Those chars in the position before current `start` are irrelevant. 
+
+The length of current substring is `j - start + 1`. So in every iteration, just update max length to be the greater one of `maxlen, j - start + 1`.
+
+```python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        subchar = dict()
+        maxlen = 0
+
+        start = 0   # record the start pos of substring
+        for j in range(len(s)):
+            if ord(s[j]) in subchar.keys():
+                start = max(start, subchar[ord(s[j])] + 1)  # update start pos if elligible
+        
+            maxlen = max(maxlen, j - start + 1) # update max length so far
+            subchar[ord(s[j])] = j
+
+        return maxlen
+```
 
 ## [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
@@ -87,20 +115,21 @@ Since the input array is sorted, we can easily think of the binary search method
 
 ```python
 # binary search approach
-def twoSum(self, numbers: List[int], target: int) -> List[int]:
-    for i in range(len(numbers)):
-        lo = i + 1
-        hi = len(numbers) - 1
-        key = target - numbers[i]
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        for i in range(len(numbers)):
+            lo = i + 1
+            hi = len(numbers) - 1
+            key = target - numbers[i]
 
-        while lo <= hi:
-            mid = math.floor((lo + hi) / 2)
-            if key < numbers[mid]:
-                hi = mid - 1
-            elif key > numbers[mid]:
-                lo = mid + 1
-            else:
-                return [i+1, mid+1]
+            while lo <= hi:
+                mid = math.floor((lo + hi) / 2)
+                if key < numbers[mid]:
+                    hi = mid - 1
+                elif key > numbers[mid]:
+                    lo = mid + 1
+                else:
+                    return [i+1, mid+1]
 ```
 
 <details>
@@ -159,17 +188,18 @@ Use two pointers `i` and `j`, from left to right and from right to left, to find
 
 ```python
 # two-pointer approach
-def twoSum(self, numbers: List[int], target: int) -> List[int]:
-    lo = 0
-    hi = len(numbers) - 1
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        lo = 0
+        hi = len(numbers) - 1
 
-    while lo < hi:
-        if (numbers[lo] + numbers[hi] == target):
-            return [lo + 1, hi + 1]
-        if (numbers[lo] + numbers[hi] < target):
-            lo += 1
-        else:
-            hi -= 1
+        while lo < hi:
+            if (numbers[lo] + numbers[hi] == target):
+                return [lo + 1, hi + 1]
+            if (numbers[lo] + numbers[hi] < target):
+                lo += 1
+            else:
+                hi -= 1
 ```
 
 
