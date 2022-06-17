@@ -69,6 +69,14 @@ class Solution:
         return root
 ```
 
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+
 ## [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
 Use one single pointer iterate through every char of the string, and with variable `start` recording the current substring without repeat char. Keep every char and its position in hash table for fast search.
@@ -78,6 +86,9 @@ Whenever encountering a repeat char, all we need is to update the start of the s
 That is to say, only the repeat char in the range of substring is what we care about, which will be the pivot point for updating `start`. Those chars in the position before current `start` are irrelevant. 
 
 The length of current substring is `j - start + 1`. So in every iteration, just update max length to be the greater one of `maxlen, j - start + 1`.
+
+- Time complexity: O(N)
+- Space complexity: O(N)
 
 ```python
 class Solution:
@@ -95,6 +106,14 @@ class Solution:
 
         return maxlen
 ```
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
 
 ## [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
