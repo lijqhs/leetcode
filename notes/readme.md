@@ -1,5 +1,18 @@
-# Notes on solutions
+# Notes on solutions <!-- omit in toc -->
 
+- [1. Two Sum](#1-two-sum)
+- [2. Add Two Numbers](#2-add-two-numbers)
+- [3. Longest Substring Without Repeating Characters](#3-longest-substring-without-repeating-characters)
+- [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
+
+
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
 
 
 ## [1. Two Sum](https://leetcode.com/problems/two-sum/)
