@@ -92,13 +92,13 @@ class Solution:
 
 ## [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 
-Use one single pointer iterate through every char of the string, and with variable `start` recording the current substring without repeat char. Keep every char and its position in hash table for fast search.
+Use one single pointer iterate through every char of the string, and with variable `start` recording the current substring without repeat char. Keep every char and its position in hash table `charTable` for fast search (O(1)).
 
 Whenever encountering a repeat char, all we need is to update the start of the substring to be the next position of the repeat char (previous one). Anyway if this position is less than `start`, we won't update start (won't go back). 
 
-That is to say, only the repeat char in the range of substring is what we care about, which will be the pivot point for updating `start`. Those chars in the position before current `start` are irrelevant. 
+That is to say, only the repeat char in the range of substring is what we care about, which will be the pivot point for updating `start`. Those repeat chars in the position before current `start` are irrelevant. 
 
-The length of current substring is `j - start + 1`. So in every iteration, just update max length to be the greater one of `maxlen, j - start + 1`.
+The length of current substring is `j - start + 1`. So in every iteration, just update max length to be the greater one of `maxLen, j - start + 1`.
 
 - Time complexity: O(N)
 - Space complexity: O(N)
@@ -106,16 +106,15 @@ The length of current substring is `j - start + 1`. So in every iteration, just 
 ```python
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        subchar = dict()
+        char_table = dict()
         maxlen = 0
-
         start = 0   # record the start pos of substring
-        for j in range(len(s)):
-            if ord(s[j]) in subchar.keys():
-                start = max(start, subchar[ord(s[j])] + 1)  # update start pos if elligible
+        for j, c in enumerate(s):
+            if c in char_table:
+                start = max(start, char_table[c] + 1)  # update start pos if elligible
         
             maxlen = max(maxlen, j - start + 1) # update max length so far
-            subchar[ord(s[j])] = j
+            char_table[c] = j
 
         return maxlen
 ```

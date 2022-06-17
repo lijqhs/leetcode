@@ -98,16 +98,37 @@ class Solution4:
     when having repeat char, all we need is to update the start of substring
     """
     def lengthOfLongestSubstring(self, s: str) -> int:
-        subchar = dict()
+        char_table = dict()
         maxlen = 0
 
         start = 0   # record the start pos of substring
         for j in range(len(s)):
-            if ord(s[j]) in subchar.keys():
-                start = max(start, subchar[ord(s[j])] + 1)  # update start pos if elligible
+            if ord(s[j]) in char_table.keys():
+                start = max(start, char_table[ord(s[j])] + 1)  # update start pos if elligible
         
             maxlen = max(maxlen, j - start + 1) # update max length so far
-            subchar[ord(s[j])] = j
+            char_table[ord(s[j])] = j
+
+        return maxlen
+
+
+class Solution41:
+    """
+    single pointer
+    
+    record every pos in dictionary
+    when having repeat char, all we need is to update the start of substring
+    """
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        char_table = dict()
+        maxlen = 0
+        start = 0   # record the start pos of substring
+        for j, c in enumerate(s):
+            if c in char_table:
+                start = max(start, char_table[c] + 1)  # update start pos if elligible
+        
+            maxlen = max(maxlen, j - start + 1) # update max length so far
+            char_table[c] = j
 
         return maxlen
 
@@ -115,9 +136,9 @@ class Solution4:
 if __name__ == '__main__':
     # s = " "
     # s = "abcabcbb"
-    s = 'dvdf'
+    # s = 'dvdf'
     # s = 'pwwkew'
-    # s = "abcdefcghi"
+    s = "abcdefcghi"
     # s = "loddktdji"
-    solution = Solution4()
+    solution = Solution41()
     print("longest length: ", solution.lengthOfLongestSubstring(s))
