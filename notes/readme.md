@@ -140,7 +140,7 @@ median = (nums[(len(nums) - 1) // 2] + nums[len(nums) // 2]) / 2
 <details>
 
 <summary>With two given sorted arrays, to get a median, we can just merge the two sorted arrays and compute the median.</summary>
-
+<br/>
 To merge two sorted arrays the most direct way is to iterate the two arrays at the same time, who comes first stands out of the array and move to next and compare again. Until one array is exhausted, just concat the rest of the other. This operation is linear time.
 
 ```python
@@ -182,7 +182,7 @@ class Solution:
 <details>
 
 <summary>We can optimize the merging step by shrinking merging elements.</summary>
-
+<br/>
 Compute medians of each array, say, `median1` and `median2`. If `median1` and `median2` are equal, we can tell this median is the median of two arrays. If `median1 < median2`, then the median of the two will be some number in the range from `median1` to `median2`. So, for each array, those numbers outside this range will be let alone, we don't need to bother to merge them. With this in mind, we can shrink the two sorted arrays significantly to much less elements. For example, 
 
 ```python
@@ -203,8 +203,7 @@ We don't need to get a sorted version to get a median! Unfortunately, [time comp
 Furthermore, we actually don't need to concat left part arrays, only their length matters. So calculation of this problem (A) simply reduces to find the particular element in the middle part of arrays:
 
 ```python
-m = (len - 1) / 2
-median = (nums_middle[int(m - len_left)] + nums_middle[int(m + .5 - len_left)]) / 2
+median = (nums_middle[(len - 1) // 2 - len_left] + nums_middle[len // 2 - len_left]) / 2
 ```
 
 [full code](../solutions/4.%20Median%20of%20Two%20Sorted%20Arrays/median_two_sorted_3.py), this version runs for **113 ms**.
@@ -215,7 +214,7 @@ median = (nums_middle[int(m - len_left)] + nums_middle[int(m + .5 - len_left)]) 
 
 <details>
 <summary>The analysis above can help think further, this problem can be transformed to another problem (B): 
-
+<br/>
 ***Find the i<sup>th</sup> element in two sorted arrays***
 </summary>
 
