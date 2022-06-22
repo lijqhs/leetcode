@@ -129,28 +129,25 @@ class Solution:
 
 ## [4. Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
 
-To get a median of a list of numbers, we have to sorted it first and get the exact element of the list if the length is an odd integer or the average of the middle two elements if the length is even. We can get the median with one statement: 
+To get a median of a sorted array `nums`: 
 
 ```python
-median = (nums[int((len(nums) - 1) / 2)] + nums[int((len(nums) - 1) / 2 + .5)]) / 2
+median = (nums[(len(nums) - 1) // 2] + nums[len(nums) // 2]) / 2
 ```
 
 **Method 1**:
 
-With two given sorted arrays, to get a median, we can just merge the two sorted arrays and compute the median.
+<details>
 
-To merge two sorted arrays the most direct way is to iterate the two arrays at the same time, who comes first stands out of the array and move to next and compare again. Until one array is exhausted, just concat the rest of the other. This operation is linear time. (m, n: size of two arrays).
+<summary>With two given sorted arrays, to get a median, we can just merge the two sorted arrays and compute the median.</summary>
 
-- Time complexity: O(m+n)
-- Space complexity: O(m+n)
+To merge two sorted arrays the most direct way is to iterate the two arrays at the same time, who comes first stands out of the array and move to next and compare again. Until one array is exhausted, just concat the rest of the other. This operation is linear time.
 
 ```python
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         nums = self.mergeList(nums1, nums2)
-
-        m = (len(nums) - 1) / 2
-        return (nums[int(m)] + nums[int(m + .5)]) / 2
+        return (nums[(len(nums) - 1) // 2] + nums[len(nums) // 2]) / 2
 
     def mergeList(self, nums1, nums2):
         nums = []
@@ -178,9 +175,13 @@ class Solution:
         return nums
 ```
 
+</details>
+
 **Method 2**:
 
-We can optimize the merging step by shrinking merging elements.
+<details>
+
+<summary>We can optimize the merging step by shrinking merging elements.</summary>
 
 Compute medians of each array, say, `median1` and `median2`. If `median1` and `median2` are equal, we can tell this median is the median of two arrays. If `median1 < median2`, then the median of the two will be some number in the range from `median1` to `median2`. So, for each array, those numbers outside this range will be let alone, we don't need to bother to merge them. With this in mind, we can shrink the two sorted arrays significantly to much less elements. For example, 
 
@@ -197,9 +198,9 @@ We don't need to get a sorted version to get a median! Unfortunately, [time comp
 
 *Now, how to get the middle side elements of each array effieciently?*
 
-**Binary search**. For `nums1`, we already know where `5` is and what we need to do is to find the *floor* element of `median2` in `nums1`. Vice versa, get the *ceiling* elemnt of `median1` in `nums2`. This operation might have time complexity of O(log(mn)). 
+**Binary search**. For `nums1`, we already know where `5` is and what we need to do is to find the *floor* element of `median2` in `nums1`. Vice versa, get the *ceiling* elemnt of `median1` in `nums2`. Use binary search to do this, which might totally have time complexity of O(log(mn)) in this case. 
 
-Furtherly, we actually don't need to concat left part arrays, only their length matters. So calculation of this problem (A) simply reduce to find the particular element in the middle part of arrays:
+Furthermore, we actually don't need to concat left part arrays, only their length matters. So calculation of this problem (A) simply reduces to find the particular element in the middle part of arrays:
 
 ```python
 m = (len - 1) / 2
@@ -208,14 +209,20 @@ median = (nums_middle[int(m - len_left)] + nums_middle[int(m + .5 - len_left)]) 
 
 [full code](../solutions/4.%20Median%20of%20Two%20Sorted%20Arrays/median_two_sorted_3.py), this version runs for **113 ms**.
 
+</details>
+
 **Method 3**:
 
-The analysis above can help think further, this problem can be transformed to another problem (B): 
+<details>
+<summary>The analysis above can help think further, this problem can be transformed to another problem (B): 
+
 ***Find the i<sup>th</sup> element in two sorted arrays***
+</summary>
 
 If we can find the i<sup>th</sup> element, all we need to do is to find the element(s) at `(m + n - 1) // 2` and `(m + n) / 2` to get the median. And also, we can compare medians to get two much smaller sorted arrays to reduce recursive cost.
 
-To find the i<sup>th</sup> element in two sorted arrays, the method is analogue to find the middle part subarray in the range from `median1` to `median2` stated in the *Method2*. 
+To find the i<sup>th</sup> element in two sorted arrays, the method is analogue to find the middle part subarray in the range from `median1` to `median2` stated in the *Method2*. Use the binary search to find the left side element of each array which gradually approaches the target.
+
 1. find the ceiling (smallest one greater than) of the start element of `nums2` in `nums1`, index is `k`. (use binary search)
 2. if `i < k`, then return `nums1[i]`,
 3. otherwise, cut `nums1` to `nums1[k:]`, exchange `nums1` and `nums2`, set `i` to `i-k`, repeat step 1.
@@ -276,6 +283,15 @@ def findElement3(self, nums1, left1, right1, nums2, left2, right2, index):
 ```
 
 It runs for **101 ms**.
+
+</details>
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
 
 ## [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
 
