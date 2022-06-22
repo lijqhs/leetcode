@@ -91,7 +91,7 @@ if __name__ == "__main__":
     nums1 = [0,0]
     nums2 = [0,0]
 
-    s = Solution23()
+    s = Solution4()
 
     # print("ceiling: ", s.getCeiling(nums1, 13))
     # print(s.findElement(nums1, nums2, 1))
