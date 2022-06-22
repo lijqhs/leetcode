@@ -213,8 +213,9 @@ median = (nums_middle[(len - 1) // 2 - len_left] + nums_middle[len // 2 - len_le
 **Method 3**:
 
 <details>
+
 <summary>The analysis above can help think further, this problem can be transformed to another problem (B): 
-<br/>
+
 ***Find the i<sup>th</sup> element in two sorted arrays***
 </summary>
 
