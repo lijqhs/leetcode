@@ -183,7 +183,8 @@ class Solution:
 
 <summary>We can optimize the merging step by shrinking merging elements.</summary>
 <br/>
-Compute medians of each array, say, `median1` and `median2`. If `median1` and `median2` are equal, we can tell this median is the median of two arrays. If `median1 < median2`, then the median of the two will be some number in the range from `median1` to `median2`. So, for each array, those numbers outside this range will be let alone, we don't need to bother to merge them. With this in mind, we can shrink the two sorted arrays significantly to much less elements. For example, 
+
+Compute medians of each array, say, `median1` and `median2`. If `median1` and `median2` are equal, we can tell this median is the median of two arrays. If `median1 < median2`, then the median of the two arrays will be some number in the range from `median1` to `median2`. So, for each array, those numbers outside this range will be let alone, we don't need to bother to merge them. With this in mind, we can shrink the two sorted arrays significantly to much less elements. For example, 
 
 ```python
 nums1 = [1,3,5,11,12]   # median1 = 5
@@ -284,7 +285,46 @@ def findElement3(self, nums1, left1, right1, nums2, left2, right2, index):
 
 It runs for **101 ms**.
 
+But `findElement` to find i<sup>th</sup> element is not optimal, every step needs a binary search. The core idea in this method is to use a left hand to approch the target i<sup>th</sup> element. If the target is at the right side, it needs more time. For example, if we want to find `17`th element, this function costs nearly `nlogn`. To find the right side target, it is better to use right hand to approach the target (should call some `getFloorNoEqual` in the iteration). So although this function can solve the problem, it is not *balanced* and the time complexity is approximately O(min(mlogn, nlogm)). Right side target costs more time than left side target due to its intrinsic unbalanced logic.
+
+```python
+nums1 = [1,2,3,4,5,6,7,8,9]
+nums2 = [1,2,3,4,5,6,7,8,9]
+```
+
+Recall that at the beginning of *Method2* we state that if `median1 < median2` then the median of the two arrays will be some number in the range from `median1` to `median2`. This is equivalent to that the target median will be not in the left half of `nums1` or the right half of `nums2`. If `i` (i<sup>th</sup> element) is greater than the index of the target median, then it is certain that i<sup>th</sup> element will be in the left half of `nums1`. Vice versa, if `i` is less than the median index, i<sup>th</sup> element will be in the right half of `nums2`.
+
+Generally for k1<sup>th</sup> in `nums1` and k2<sup>th</sup> in `nums2`, if `i > k1 + k2`, and `nums1[k1] < nums2[k2]`. Then i<sup>th</sup> will be certainly not in the subarray in the left of k1<sup>th</sup>. So we can also use binary search idea to approach the target i<sup>th</sup> by using median index in every iteration. 
+
+```python
+def findElement4(self, nums1, left1, right1, nums2, left2, right2, index):
+    while True:
+        if (left1 > right1): return nums2[index - left1]
+        if (left2 > right2): return nums1[index - left2]
+
+        i1 = (left1 + right1) // 2
+        i2 = (left2 + right2) // 2
+
+        num1, num2 = nums1[i1], nums2[i2]
+
+        if index <= i1 + i2:
+            if num1 < num2:
+                right2 = i2 - 1
+            else:
+                right1 = i1 - 1
+        else:
+            if num1 < num2:
+                left1 = i1 + 1
+            else:
+                left2 = i2 + 1
+```
+
+It runs for **93 ms**. [full code](../solutions/4.%20Median%20of%20Two%20Sorted%20Arrays/median_two_sorted_9.py). Time complexity is O(log(m)+log(n)) < O(log(m+n)).
+
 </details>
+
+
+
 
 
 <br/>

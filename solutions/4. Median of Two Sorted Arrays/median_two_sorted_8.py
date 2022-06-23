@@ -62,6 +62,8 @@ class Solution8:
             if (left2 >= right2): return index - left2 < right1 and nums1[index - left2] or None 
 
             newLeft1 = self.getCeilingNoEqual(nums1, left1, right1, nums2[left2])
+
+            print("new left: ", newLeft1, "right 1: ", right1)  # debug use
             if (newLeft1 > index - left2): 
                 return nums1[index - left2]
             else: 
@@ -81,9 +83,11 @@ class Solution8:
             if (nums[mid] > bound):
                 r = mid
                 mid = (l + r) // 2
+                print("#")  # debug use
             else:
                 l = mid + 1
                 mid = (l + r) // 2
+                print("+")  # debug use
 
         return mid
 
@@ -131,9 +135,43 @@ class Solution8:
         return (nums[int(m)] + nums[int(m + .5)]) / 2
 
 
+    # for debug use
+    def mergeList(self, nums1, nums2):
+
+        nums = []
+
+        if (len(nums1) == 0): return nums2
+        if (len(nums2) == 0): return nums1
+
+        i, j = 0, 0
+        while (i < len(nums1) or j < len(nums2)):
+            if (i == len(nums1)):
+                nums.extend(nums2[j:])
+                break
+
+            if (j == len(nums2)):
+                nums.extend(nums1[i:])
+                break
+
+            if (nums1[i] < nums2[j]):
+                nums.append(nums1[i])
+                i += 1
+            else:
+                nums.append(nums2[j])
+                j += 1
+
+        return nums
+
+
 if __name__ == "__main__":
-    nums1 = [3,5,6]
-    nums2 = [3,8,9,13,14]
+    # nums1 = [3,5,6,7,8,10]
+    # nums2 = [3,8,9,13,14]
+
+    nums1 = [1,2,3,4,5,6,7,8,9]
+    nums2 = [1,2,3,4,5,6,7,8,9]
+
+    # nums1 = [1,1,1,1,1,1,1,1,1]
+    # nums2 = [1,1,1,1,1,1,1,1,1]
 
     # nums1 = [1,2]
     # nums2 = [3,4]
@@ -143,4 +181,6 @@ if __name__ == "__main__":
 
     s = Solution8()
 
-    print("median:", s.findMedianSortedArrays(nums1, nums2))
+    # print("median:", s.findMedianSortedArrays(nums1, nums2))
+    print(s.findElement3(nums1, 0, len(nums1), nums2, 0, len(nums2), 17))
+    print(s.mergeList(nums1, nums2))
