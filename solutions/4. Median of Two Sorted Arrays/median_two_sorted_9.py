@@ -96,7 +96,5 @@ if __name__ == "__main__":
     s = Solution9()
 
     # print("median:", s.findMedianSortedArrays(nums1, nums2))
-    # print(s.findElement4(nums1, 0, len(nums1)-1, nums2, 0, len(nums2)-1, 2))
-    m = (len(nums1) + len(nums2)) // 2
-    print(s.findElement5(nums1, 0, len(nums1)-1, nums2, 0, len(nums2)-1, m))
-    print(s.mergeList(nums1, nums2))
+    print(s.findElement4(nums1, 0, len(nums1)-1, nums2, 0, len(nums2)-1, 2))
+    # print(s.mergeList(nums1, nums2))
