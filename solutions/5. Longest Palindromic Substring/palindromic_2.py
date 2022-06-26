@@ -37,9 +37,7 @@ class Solution:
                     radius = maxMirroredRadius # main while loop will start from here, expand the radius if elligible
                     break # exit while loop early
 
-        
         max1 = max(palinRadius)
-        
         index1 = [i for i, v in enumerate(palinRadius) if v == max1]
 
         print(palinRadius)
@@ -50,8 +48,7 @@ class Solution:
             palinSS = ss[ii - (palinRadius[ii]):ii + (palinRadius[ii])+1]
             palinS = ''.join([c for c in palinSS if c != '|'])
             return palinS
-
-
+            
         return ""
 
 

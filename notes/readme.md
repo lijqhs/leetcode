@@ -5,6 +5,8 @@
 - [3. Longest Substring Without Repeating Characters](#3-longest-substring-without-repeating-characters)
 - [4. Median of Two Sorted Arrays](#4-median-of-two-sorted-arrays)
 - [5. Longest Palindromic Substring](#5-longest-palindromic-substring)
+- [6. Zigzag Conversion](#6-zigzag-conversion)
+- [7. Reverse Integer](#7-reverse-integer)
 - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
 
 
@@ -336,6 +338,105 @@ It runs for **93 ms**. [full code](../solutions/4.%20Median%20of%20Two%20Sorted%
 
 Using [Manacher's algorithm](https://en.wikipedia.org/wiki/Longest_palindromic_substring) for longest palindromic substring.
 
+```python
+class Solution:
+    """
+    Manacher's algorithm
+    https://en.wikipedia.org/wiki/Longest_palindromic_substring
+    
+    """
+    def longestPalindrome(self, s: str) -> str:
+        ss = ''.join(['|' + c for c in s] + ['|'])
+        palinRadius = [0] * len(ss)
+
+        ii = 0  # center index, iterating ss "|b|a|b|a|b|" when s "babab"
+        radius = 0
+        while ii < len(ss):
+            while (ii - (radius+1) >= 0 and ii + (radius+1) < len(ss)) and (ss[ii - (radius+1)] == ss[ii + (radius+1)]):
+                radius += 1
+
+            palinRadius[ii] = radius
+
+            oldCenter = ii
+            oldRadius = radius
+            ii = ii+1
+            
+            radius = 0 
+            while ii <= oldCenter + oldRadius:
+                mirroredCenter = oldCenter - (ii - oldCenter)
+                maxMirroredRadius = oldCenter + oldRadius - ii
+                if palinRadius[mirroredCenter] < maxMirroredRadius:
+                    palinRadius[ii] = palinRadius[mirroredCenter]
+                    ii = ii+1
+                elif palinRadius[mirroredCenter] > maxMirroredRadius:
+                    palinRadius[ii] = maxMirroredRadius
+                    ii = ii+1
+                else:
+                    palinRadius[mirroredCenter] = maxMirroredRadius
+                    radius = maxMirroredRadius # main while loop will start from here, expand the radius if elligible
+                    break # exit while loop early
+
+        max1 = max(palinRadius)
+        index1 = [i for i, v in enumerate(palinRadius) if v == max1]
+
+        print(palinRadius)
+        print(index1)
+
+        if index1:
+            ii = index1[0]
+            palinSS = ss[ii - (palinRadius[ii]):ii + (palinRadius[ii])+1]
+            palinS = ''.join([c for c in palinSS if c != '|'])
+            return palinS
+            
+        return ""
+```
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+
+## [6. Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/)
+
+```python
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1: return s
+        numPattern = 2 * (numRows - 1)      # repeat pattern substring
+
+        matrix = []
+        for k in range(numRows):
+            matrix.append([])
+            
+        for i in range(len(s)):
+            row = i % numPattern
+            if row >= numRows:
+                row = numPattern - row
+            matrix[row].append(s[i])
+        
+        matrix = sum(matrix, [])
+        newStr = ''.join(matrix)
+        return newStr
+```
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+
+## [7. Reverse Integer](https://leetcode.com/problems/reverse-integer/)
+
+```python
+class Solution:
+    def reverse(self, x: int) -> int:
+        sign = x < 0 and -1 or 1
+        r = str(x * sign)[::-1]
+        return 0 if (len(r) == 10 and r > str(2**31)) else int(r) * sign
+```
 
 <br/>
 <div align="right">
