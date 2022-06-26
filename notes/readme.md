@@ -4,6 +4,7 @@
 - [2. Add Two Numbers](#2-add-two-numbers)
 - [3. Longest Substring Without Repeating Characters](#3-longest-substring-without-repeating-characters)
 - [4. Median of Two Sorted Arrays](#4-median-of-two-sorted-arrays)
+- [5. Longest Palindromic Substring](#5-longest-palindromic-substring)
 - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
 
 
@@ -324,7 +325,16 @@ It runs for **93 ms**. [full code](../solutions/4.%20Median%20of%20Two%20Sorted%
 </details>
 
 
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
 
+
+## [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+
+Using [Manacher's algorithm](https://en.wikipedia.org/wiki/Longest_palindromic_substring) for longest palindromic substring.
 
 
 <br/>
