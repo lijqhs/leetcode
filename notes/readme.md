@@ -9,6 +9,12 @@
 - [7. Reverse Integer](#7-reverse-integer)
 - [8. String to Integer (atoi)](#8-string-to-integer-atoi)
 - [9. Palindrome Number](#9-palindrome-number)
+- [10. Regular Expression Matching](#10-regular-expression-matching)
+- [11. Container With Most Water](#11-container-with-most-water)
+- [12. Integer to Roman](#12-integer-to-roman)
+- [13. Roman to Integer](#13-roman-to-integer)
+- [14. Longest Common Prefix](#14-longest-common-prefix)
+- [70. Climbing Stairs](#70-climbing-stairs)
 - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
 
 
@@ -506,8 +512,77 @@ class Solution:
 </div>
 <br/>
 
+## [10. Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/)
+
+**TODO**
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
 
 
+## [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+
+This problem can be accomplished via intuitively by using two pointers, from leftmost and from rightmost, which can form the most widest container. Within each step, skip a shorter vertical line. The time complexity is O(n).
+
+```python
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        left = i = 0
+        right = j = len(height) - 1
+
+        minHeight = min(height[left], height[right])
+        maxArea = minHeight * (right - left)
+
+        while i < j:
+
+            if height[i] < height[j]:
+                i += 1
+            else:
+                j -= 1
+
+            mH = min(height[i], height[j])
+            if mH < minHeight:
+                continue
+
+            area = mH * (j - i)
+            if area > maxArea:
+                left = i
+                right = j
+                minHeight = mH
+                maxArea = area
+                # print("left: ", left, height[left])
+                # print("right: ", right, height[right])
+
+        return maxArea
+        # return left, right, maxArea
+```
+
+The code can be simplified to only a few lines since only `maxArea` is what we want:
+
+```python
+class Solution2:
+    def maxArea(self, height: List[int]) -> int:
+        i = 0
+        j = len(height) - 1
+
+        maxArea = 0
+
+        while i < j:
+
+            area = min(height[i], height[j]) * (j - i)
+            if area > maxArea:
+                maxArea = area
+
+            if height[i] < height[j]:
+                i += 1
+            else:
+                j -= 1
+
+        return maxArea
+```
 
 
 <br/>
@@ -515,6 +590,112 @@ class Solution:
     <b><a href="#top">↥ back to top</a></b>
 </div>
 <br/>
+
+## [12. Integer to Roman](https://leetcode.com/problems/integer-to-roman/)
+
+```python
+class Solution:
+    def intToRoman(self, num: int) -> str:
+        integers = [1,4,5,9,10,40,50,90,100,400,500,900,1000]
+        letters = ['I','IV','V','IX','X','XL','L','XC','C','CD','D','CM','M']
+        result = ''
+
+        for i in reversed(range(len(integers))):
+            f = num // integers[i]
+            if f > 0:
+                num = num % integers[i]
+                result += f * letters[i]
+            
+            if num == 0:
+                break
+
+        return result
+```
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+
+## [13. Roman to Integer](https://leetcode.com/problems/roman-to-integer/)
+
+```python
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        integers = [1,4,5,9,10,40,50,90,100,400,500,900,1000]
+        letters = ['I','IV','V','IX','X','XL','L','XC','C','CD','D','CM','M']
+        result = 0
+
+        i = len(letters) - 1
+        while i >= 0:
+            if s[0:len(letters[i])] == letters[i]:
+                result += integers[i]
+                s = s[len(letters[i]):]
+            else:
+                i -= 1
+
+        return result
+```
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+## [14. Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/)
+
+```python
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs: return ""
+
+        lcp = ""
+        s1 = min(strs)
+        s2 = max(strs)
+
+        n = min(len(s1), len(s2))
+
+        for d in range(n):
+            if s1[d] != s2[d]:
+                break
+            lcp += s1[d]
+
+        return lcp
+```
+
+## [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+
+If we count steps from top to bottom, thing will be more easier to understand. 
+- Start from the topmost stair which is the 0<sup>th</sup> level, we have the only one way to the top since we are already at the top. 
+- Then the next down step is the 1<sup>st</sup> level, we have the only one way to the top since we can only climb 1 step to the top.
+- Then at 2<sup>nd</sup> level, we have two options, climbing 1 step to the 1<sup>st</sup> level which has one way to the top and climbing 2 steps to the 0<sup>th</sup> level which has one way to the top.
+- Similarly, with 1 step or 2 steps, we can climb to the previous first level or the previous second level, with memoization, we already have how many ways we can get to the top from these two levels, so we can sum up to get how many ways we can get to the top from current level.
+- This is the exact Fibonacci number.
+- Solve the Fibonacci number with dynamic programming ideas.
+
+
+```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a, b = 1, 1
+        for i in range(n):
+            a, b = b, a + b
+        return a
+```
+
+```python
+class Solution2:
+    def climbStairs(self, n: int) -> int:
+        fib = [1] * 2
+        for k in range(2,n + 1):
+            fib[k%2] = fib[(k-1)%2] + fib[(k-2)%2]
+        return fib[n%2]
+```
+
+The second one is much faster than the first one which actually takes more assignment operations. 
 
 
 ## [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
