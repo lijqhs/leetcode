@@ -906,7 +906,7 @@ class Solution:
 
 For example, Input: cost = [10,15,20]. 
 
-The **subproblem graph** contains edges from *x* to *y* if a top-down recursive procedure for solving *x* directly calls itself to solve *y*. We can view the top-down method (with memoization) for dynamic programming as a "depth-first search" of the subproblem graph.
+The **subproblem graph** contains edges from *x* to *y* if a top-down recursive procedure for solving *x* directly calls itself to solve *y*. We can view the top-down method (with memoization) for dynamic programming as a "**depth-first search**" of the subproblem graph.
 
 ```mermaid
 graph TB
@@ -924,7 +924,7 @@ D-->B
 C-->A
 ```
 
-This graph is a reduced version of the tree below. In a bottom-up dynamic-programming algorithm, we consider the vertices of the subproblem graph in an order that is a "reverse topological sort".
+This graph is a reduced version of the tree below. In a bottom-up dynamic-programming algorithm, we consider the vertices of the subproblem graph in an order that is a "**reverse topological sort**".
 
 ```mermaid
 graph TB
@@ -985,7 +985,7 @@ class Solution:
         c.append(0)
 
         for i in range(len(c) - 3, -1, -1):
-            c[i] += min(c[i + 1], c[i + 2]) # update i step minimal cost to the top
+            c[i] += min(c[i + 1], c[i + 2]) # update minimal cost of step i to the top
 
         return min(c[0], c[1])
 ```

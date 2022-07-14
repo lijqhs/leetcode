@@ -17,7 +17,7 @@ class Solution1:
         c.append(0)
 
         for i in range(len(c) - 3, -1, -1):
-            c[i] += min(c[i + 1], c[i + 2]) # update i step minimal cost to the top
+            c[i] += min(c[i + 1], c[i + 2]) # update minimal cost of step i to the top
 
         return min(c[0], c[1])
 
