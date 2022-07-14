@@ -868,6 +868,8 @@ Dynamic programming thus uses additional memory to save computation time; it ser
 - **bottom-up method**: sort the subproblems by size and solve them in size order, smallest first.
 
 
+For example, Input: cost = [10,15,20]
+
 ```mermaid
 graph TB
 
@@ -885,9 +887,9 @@ B--A
 E-->C
 D-->B
 C-->A
-
 ```
 
+This graph is a reduced version of the tree
 
 ```mermaid
 graph TB
@@ -902,6 +904,8 @@ G((start))
 H((0))
 I((start))
 J((start))
+K((start))
+L((start))
 
 A---|20|B
 A---|15|C
@@ -912,6 +916,8 @@ C---G
 D---|10|H
 D---I
 H---J
+E---K
+F---L
 ```
 
 
