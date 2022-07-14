@@ -1,3 +1,4 @@
+from cmath import cos
 from typing import List
 
 class Solution:
@@ -12,5 +13,18 @@ class Solution:
         return min(cost[0], cost[1])
 
 
-s = Solution()
-print(s.minCostClimbingStairs([1,100,1,1,1,100,1,1,100,1]))
+class Solution2:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        return min(self.min_cost(cost, len(cost) - 1), self.min_cost(cost, len(cost) - 2))
+
+    def min_cost(self, cost: List[int], i: int) -> int:
+        if i == 0 or i == 1:
+            return cost[i]
+
+        return cost[i] + min(self.min_cost(cost, i - 1), self.min_cost(cost, i - 2))
+
+
+s = Solution2()
+cost = [10,15,20]
+cost = [1,100,1,1,1,100,1,1,100,1]
+print(s.minCostClimbingStairs(cost))

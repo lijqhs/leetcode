@@ -832,9 +832,36 @@ class Solution:
 
 ## [746. Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/)
 
-Method 1:
+**optimal substructure**: optimal solutions to a problem incorporate optimal solutions to related subproblems
 
-<img src="res/min_climbing.jpg" width="300"></img>
+[explanation on DP solution](https://leetcode.com/problems/min-cost-climbing-stairs/discuss/773865/A-Beginner's-Guide-on-DP-validation-and-How-to-come-up-with-a-Recursive-solution-Python-3)
+
+
+<img src="res/min_climbing.jpeg" width="300"></img>
+
+This problem has an **optimal substructure** (optimal solutions to a problem incorporate optimal solutions to related subproblems, which we may solve independently). To get the step `i`, we can climb from step `i-1` or `i-2`, of which the minimal cost we denote as `c[i-1]` and `c[i-2]`. We can start from step `i` to the next one step or two steps with the minimal cost `c[i] = cost[i] + min(c[i-1], c[i-2])`. 
+
+In this formulation, an optimal solution embodies the solution to two related subproblem—minimal cost starting from the previous two steps.
+
+**Recursive top-down implementation**
+
+```python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        return min(self.min_cost(cost, len(cost) - 1), self.min_cost(cost, len(cost) - 2))
+
+    def min_cost(self, cost: List[int], i: int) -> int:
+        if i == 0 or i == 1:
+            return cost[i]
+
+        return cost[i] + min(self.min_cost(cost, i - 1), self.min_cost(cost, i - 2))
+```
+
+However the code is not efficient which will easily get an `Time Limit Exceeded` error when input is of length 1000 or more. The [time complexity of this recursion function](https://stackoverflow.com/questions/13467674/determining-complexity-for-recursive-functions-big-o-notation) is O(2<sup>n</sup>).
+
+**Using dynamic programming for optimal climbing**
+
+TODO
 
 Input: cost = [10,15,20]
 
