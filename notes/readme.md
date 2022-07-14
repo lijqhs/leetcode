@@ -861,6 +861,33 @@ However the code is not efficient which will easily get an `Time Limit Exceeded`
 
 **Using dynamic programming for optimal climbing**
 
+Having observed that the recursive solution is inefficient because solves the same subproblems repeatedly, we can arrange for each subproblem to be solved only once, saving its solution. If we need to refer to this subproblem’s solution again later, we can just look it up, rather than recompute it. 
+
+Dynamic programming thus uses additional memory to save computation time; it serves an example of a **time-memory trade-off**. The savings may be dramatic: an exponential-time solution may be transformed into a polynomial-time solution. There are two equivalent ways to implement dynamic-programming approach:
+- **top-down with memoization**: write the procedure recursively in a natural manner, but modified to save the result of each subproblem (in an array or hash table). 
+- **bottom-up method**: sort the subproblems by size and solve them in size order, smallest first.
+
+
+```mermaid
+graph TB
+
+A((0))
+B((1))
+C((2))
+D((3))
+E((4))
+
+E-->D
+E-->C
+D-->C
+D-->B
+C-->B
+C-->A
+B-->A
+
+```
+
+
 TODO
 
 Input: cost = [10,15,20]
