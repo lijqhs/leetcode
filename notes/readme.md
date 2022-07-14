@@ -875,12 +875,12 @@ A((0))
 B((1))
 C((2))
 D((3))
-E((4))
+E((top))
 
 E-->D
 D-->C
 C-->B
-B-->A
+B--A
 
 E-->C
 D-->B
@@ -888,6 +888,35 @@ C-->A
 
 ```
 
+
+```mermaid
+graph TB
+
+A((top))
+B((2))
+C((1))
+D((1))
+E((0))
+F((0))
+G((start))
+H((0))
+I((start))
+J((start))
+
+A--|20|B
+A--|15|C
+B--|15|D
+B--|10|E
+C--|10|F
+C--G
+D--|10|H
+D--I
+H--J
+```
+
+
+
+Method 2:
 
 TODO
 
