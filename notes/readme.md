@@ -832,10 +832,7 @@ class Solution:
 
 ## [746. Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/)
 
-**optimal substructure**: optimal solutions to a problem incorporate optimal solutions to related subproblems
-
-[explanation on DP solution](https://leetcode.com/problems/min-cost-climbing-stairs/discuss/773865/A-Beginner's-Guide-on-DP-validation-and-How-to-come-up-with-a-Recursive-solution-Python-3)
-
+**Method 1:**
 
 <img src="res/min_climbing.jpeg" width="300"></img>
 
@@ -847,6 +844,9 @@ In this formulation, an optimal solution embodies the solution to two related su
 
 ```python
 class Solution:
+    """
+    naive recursive solution
+    """
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         return min(self.min_cost(cost, len(cost) - 1), self.min_cost(cost, len(cost) - 2))
 
@@ -865,10 +865,48 @@ Having observed that the recursive solution is inefficient because solves the sa
 
 Dynamic programming thus uses additional memory to save computation time; it serves an example of a **time-memory trade-off**. The savings may be dramatic: an exponential-time solution may be transformed into a polynomial-time solution. There are two equivalent ways to implement dynamic-programming approach:
 - **top-down with memoization**: write the procedure recursively in a natural manner, but modified to save the result of each subproblem (in an array or hash table). 
+
+```python
+class Solution:
+    """
+    recursive solution with memoization
+    """
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        c = [0] * len(cost)
+        return min(self.min_cost(cost, len(cost) - 1, c), self.min_cost(cost, len(cost) - 2, c))
+
+    def min_cost(self, cost: List[int], i: int, c: List[int]) -> int:
+        if i == 0 or i == 1:
+            return cost[i]
+
+        if c[i] != 0: return c[i]
+
+        c[i] = cost[i] + min(self.min_cost(cost, i - 1, c), self.min_cost(cost, i - 2, c))
+
+        return c[i]
+```
+
 - **bottom-up method**: sort the subproblems by size and solve them in size order, smallest first.
 
+```python
+class Solution:
+    """
+    bottom-up solution
+    """
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        c = [0] * len(cost)
+        for i in range(len(cost)):
+            if i < 2: 
+                c[i] = cost[i]
+            else:
+                c[i] = cost[i] + min(c[i - 1], c[i - 2])
 
-For example, Input: cost = [10,15,20]
+        return min(c[len(cost) - 1], c[len(cost) - 2])
+```
+
+For example, Input: cost = [10,15,20]. 
+
+The **subproblem graph** contains edges from *x* to *y* if a top-down recursive procedure for solving *x* directly calls itself to solve *y*. We can view the top-down method (with memoization) for dynamic programming as a "depth-first search" of the subproblem graph.
 
 ```mermaid
 graph TB
@@ -876,20 +914,17 @@ graph TB
 A((0))
 B((1))
 C((2))
-D((3))
-E((top))
+D((top))
 
-E-->D
 D-->C
 C-->B
-B---A
+B-->A
 
-E-->C
 D-->B
 C-->A
 ```
 
-This graph is a reduced version of the tree
+This graph is a reduced version of the tree below. In a bottom-up dynamic-programming algorithm, we consider the vertices of the subproblem graph in an order that is a "reverse topological sort".
 
 ```mermaid
 graph TB
@@ -920,13 +955,7 @@ E---K
 F---L
 ```
 
-
-
-Method 2:
-
-TODO
-
-Input: cost = [10,15,20]
+**Method 2:**
 
 ```mermaid
 graph TB
@@ -945,6 +974,20 @@ B-->|15|D
 B-->|15|E
 D-->|20|G
 C-->|20|F
+```
+
+If we consider the problem from the top, and denote `c[i]` as the cost start from step `i` to the top (disregard with previous steps). We can have the analogue analysis as above. Bottom-up solution is:
+
+```python
+class Solution:
+    def minCostClimbingStairs(self, cost: List[int]) -> int:
+        c = cost
+        c.append(0)
+
+        for i in range(len(c) - 3, -1, -1):
+            c[i] += min(c[i + 1], c[i + 2]) # update i step minimal cost to the top
+
+        return min(c[0], c[1])
 ```
 
 
