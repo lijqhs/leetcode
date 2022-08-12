@@ -16,6 +16,8 @@
 - [14. Longest Common Prefix](#14-longest-common-prefix)
 - [70. Climbing Stairs](#70-climbing-stairs)
 - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
+- [217. Contains Duplicate](#217-contains-duplicate)
+- [242. Valid Anagram](#242-valid-anagram)
 - [746. Min Cost Climbing Stairs](#746-min-cost-climbing-stairs)
 
 
@@ -828,6 +830,67 @@ class Solution:
     <b><a href="#top">↥ back to top</a></b>
 </div>
 <br/>
+
+## [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+
+```python
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        s = set()
+        for i in nums:
+            if i in s:
+                return True
+            else:
+                s.add(i)
+
+        return False
+```
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+## [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
+
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        d1 = dict()
+        d2 = dict()
+
+        for c in s:
+            if c in d1:
+                d1[c] = d1[c] + 1
+            else:
+                d1[c] = 1
+            
+        for c in t:
+            if c in d2:
+                d2[c] = d2[c] + 1
+            else:
+                d2[c] = 1
+
+        for k, v in d1.items():
+            if d2.get(k) == v:
+                del d2[k]
+            else:
+                return False
+        
+        if len(d2) > 0:
+            return False
+        
+        return True
+```
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
 
 
 ## [746. Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/)
