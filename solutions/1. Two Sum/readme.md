@@ -1,4 +1,4 @@
-# 1. Two Sum
+# [1. Two Sum](https://leetcode.com/problems/two-sum/)
 
 Given an array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`.
 
@@ -69,7 +69,8 @@ class Solution {
 
 **Hash table solution**
 
-Python in O(n) time.
+- Time complexity: O(n)
+- Space complexity: O(n)
 
 ```python
 import time
@@ -99,3 +100,11 @@ if __name__ == '__main__':
     print()
     print("cost time: " + str(time.time() - start))
 ```
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
