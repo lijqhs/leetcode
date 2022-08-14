@@ -14,10 +14,13 @@
 - [12. Integer to Roman](#12-integer-to-roman)
 - [13. Roman to Integer](#13-roman-to-integer)
 - [14. Longest Common Prefix](#14-longest-common-prefix)
+- [49. Group Anagrams](#49-group-anagrams)
 - [70. Climbing Stairs](#70-climbing-stairs)
 - [167. Two Sum II - Input Array Is Sorted](#167-two-sum-ii---input-array-is-sorted)
 - [217. Contains Duplicate](#217-contains-duplicate)
+- [238. Product of Array Except Self](#238-product-of-array-except-self)
 - [242. Valid Anagram](#242-valid-anagram)
+- [347. Top K Frequent Elements](#347-top-k-frequent-elements)
 - [746. Min Cost Climbing Stairs](#746-min-cost-climbing-stairs)
 
 
@@ -677,6 +680,30 @@ class Solution:
 <br/>
 
 
+## [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)
+
+```python
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        group = defaultdict(list)
+
+        for s in strs:
+            ss = ''.join(sorted(s))
+            group[ss].append(s)
+            
+        return list(group.values())
+```
+
+In this case, `defaultdict` is much more efficient than `dict`.
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+
 ## [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
 
 If we count steps from top to bottom, things will be more easier to understand. 
@@ -852,37 +879,9 @@ class Solution:
 </div>
 <br/>
 
-## [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
+## [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 
-```python
-class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
-        d1 = dict()
-        d2 = dict()
 
-        for c in s:
-            if c in d1:
-                d1[c] = d1[c] + 1
-            else:
-                d1[c] = 1
-            
-        for c in t:
-            if c in d2:
-                d2[c] = d2[c] + 1
-            else:
-                d2[c] = 1
-
-        for k, v in d1.items():
-            if d2.get(k) == v:
-                del d2[k]
-            else:
-                return False
-        
-        if len(d2) > 0:
-            return False
-        
-        return True
-```
 
 
 <br/>
@@ -891,7 +890,55 @@ class Solution:
 </div>
 <br/>
 
+## [242. Valid Anagram](https://leetcode.com/problems/valid-anagram/)
 
+```python
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        d1 = dict()
+        d2 = dict()
+
+        for i in range(len(s)):
+            d1[s[i]] = 1 + d1.get(s[i], 0)
+            d2[t[i]] = 1 + d2.get(t[i], 0)
+
+        return d1 == d2
+```
+
+Solution: [code](../solutions/242.%20Valid%20Anagram/)
+
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
+
+## [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+
+```python
+from typing import List
+from collections import defaultdict, OrderedDict
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        d = defaultdict(int)
+
+        for i in nums:
+            d[i] += 1
+
+        return list(OrderedDict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:k]).keys())
+
+```
+
+<br/>
+<div align="right">
+    <b><a href="#top">↥ back to top</a></b>
+</div>
+<br/>
 
 ## [746. Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/)
 
