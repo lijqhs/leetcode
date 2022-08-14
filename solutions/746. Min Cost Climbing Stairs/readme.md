@@ -158,7 +158,7 @@ class Solution:
         return min(c[0], c[1])
 ```
 
-
+***NOTE: Recommended to read on GitHub. (If you are reading from a GitHub Page)***
 
 <br/>
 <div align="right">
