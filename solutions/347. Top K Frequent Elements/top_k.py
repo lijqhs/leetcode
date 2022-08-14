@@ -47,6 +47,6 @@ nums = [1,1,1,2,2,3]
 # nums = [1]
 k = 2
 
-s = Solution1()
+s = Solution3()
 print(s.topKFrequent(nums, k))
         
