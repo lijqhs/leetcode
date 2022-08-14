@@ -63,19 +63,6 @@ class Solution1:
         return ''.join(ss)
         
 
-class Solution11:
-    """
-    use sorted
-    """
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        group = defaultdict(list)
-
-        for s in strs:
-            ss = ''.join(sorted(s))
-            group[ss].append(s)
-            
-        return list(group.values())
-
 
 class Solution2:
     """
@@ -93,12 +80,25 @@ class Solution2:
         return d.values()
 
 
+class Solution3:
+    """
+    use sorted
+    """
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        group = defaultdict(list)
+
+        for s in strs:
+            ss = ''.join(sorted(s))
+            group[ss].append(s)
+            
+        return list(group.values())
+
 
 
 
 strs = ["eat","tea","tan","ate","nat","bat"]
 # strs = ["a"]
 # strs = [""]
-s = Solution11()
+s = Solution3()
 print(s.groupAnagrams(strs))
 # print(s.radixsort("hello"))

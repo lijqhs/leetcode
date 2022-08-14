@@ -672,6 +672,8 @@ class Solution:
         return lcp
 ```
 
+solution: [code](../solutions/14.%20Longest%20Common%20Prefix/)
+
 
 <br/>
 <div align="right">
@@ -695,6 +697,8 @@ class Solution:
 ```
 
 In this case, `defaultdict` is much more efficient than `dict`.
+
+solution: [code](../solutions/49.%20Group%20Anagrams/)
 
 
 <br/>
@@ -734,6 +738,8 @@ class Solution2:
 ```
 
 The second one is much faster than the first one which actually takes more assignment operations. 
+
+solution: [code](../solutions/70.%20Climbing%20Stairs/)
 
 
 <br/>
@@ -850,6 +856,8 @@ class Solution:
                 hi -= 1
 ```
 
+solution: [code](../solutions/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted/)
+
 
 
 <br/>
@@ -872,6 +880,10 @@ class Solution:
 
         return False
 ```
+
+
+solution: [code](../solutions/217.%20Contains%20Duplicate/)
+
 
 <br/>
 <div align="right">
@@ -908,7 +920,7 @@ class Solution:
         return d1 == d2
 ```
 
-Solution: [code](../solutions/242.%20Valid%20Anagram/)
+solution: [code](../solutions/242.%20Valid%20Anagram/)
 
 
 <br/>
@@ -931,8 +943,10 @@ class Solution:
             d[i] += 1
 
         return list(OrderedDict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:k]).keys())
-
 ```
+
+solution: [code](../solutions/347.%20Top%20K%20Frequent%20Elements/)
+
 
 <br/>
 <div align="right">
@@ -1099,6 +1113,8 @@ class Solution:
 
         return min(c[0], c[1])
 ```
+
+solution: [code](../solutions/746.%20Min%20Cost%20Climbing%20Stairs/)
 
 
 <br/>

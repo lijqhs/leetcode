@@ -12,15 +12,6 @@ class Solution:
         return list(dict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:k]).keys())
 
 
-class Solution1:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        d = defaultdict(int)
-
-        for i in nums:
-            d[i] += 1
-
-        return list(OrderedDict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:k]).keys())
-
 
 class Solution2:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
@@ -40,6 +31,15 @@ class Solution2:
                 if len(output) == k:
                     return output
 
+
+class Solution3:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        d = defaultdict(int)
+
+        for i in nums:
+            d[i] += 1
+
+        return list(OrderedDict(sorted(d.items(), key=lambda x: x[1], reverse=True)[:k]).keys())
 
 
 nums = [1,1,1,2,2,3]
