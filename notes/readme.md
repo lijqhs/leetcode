@@ -980,7 +980,7 @@ solution: [code](../solutions/347.%20Top%20K%20Frequent%20Elements/)
 
 **Method 1:**
 
-<img src="res/min_climbing.jpeg" width="300"></img>
+<img src="res/min_climbing.jpeg" width="300"> 
 
 This problem has an **optimal substructure** (optimal solutions to a problem incorporate optimal solutions to related subproblems, which we may solve independently). To get the step `i`, we can climb from step `i-1` or `i-2`, of which the minimal cost we denote as `c[i-1]` and `c[i-2]`. We can start from step `i` to the next one step or two steps with the minimal cost `c[i] = cost[i] + min(c[i-1], c[i-2])`. 
 
