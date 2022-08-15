@@ -1,8 +1,8 @@
-# Leetcode Workout Solutions
+## Leetcode Workout Solutions
 
 > The best time to plant a tree was 20 years ago. The second best time is now.
 
-## Table of Contents
+### Table of Contents
 
 - [1. Two Sum](solutions/1.%20Two%20Sum/)
 - [2. Add Two Numbers](solutions/2.%20Add%20Two%20Numbers/)
