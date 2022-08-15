@@ -1,5 +1,4 @@
-
-# [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+## [70. Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
 
 If we count steps from top to bottom, things will be more easier to understand. 
 - Start from the topmost stair which is the 0<sup>th</sup> level, we have the only one way to the top since we are already at the top. 

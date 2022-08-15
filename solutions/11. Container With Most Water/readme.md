@@ -1,5 +1,4 @@
-
-# [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
+## [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 
 This problem can be accomplished via intuitively by using two pointers, from leftmost and from rightmost, which can form the most widest container. Within each step, skip a shorter vertical line. The time complexity is O(n).
 

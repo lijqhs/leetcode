@@ -1,4 +1,4 @@
-# [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+## [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
 
 Using [Manacher's algorithm](https://en.wikipedia.org/wiki/Longest_palindromic_substring) for longest palindromic substring.
 
