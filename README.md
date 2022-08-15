@@ -20,6 +20,7 @@
 - [14. Longest Common Prefix](solutions/14.%20Longest%20Common%20Prefix/)
 - [49. Group Anagrams](solutions/49.%20Group%20Anagrams/)
 - [70. Climbing Stairs](solutions/70.%20Climbing%20Stairs/)
+- [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)
 - [167. Two Sum II - Input Array Is Sorted](solutions/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted/)
 - [217. Contains Duplicate](solutions/217.%20Contains%20Duplicate/)
 - [238. Product of Array Except Self](solutions/238.%20Product%20of%20Array%20Except%20Self/)
