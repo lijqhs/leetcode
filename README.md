@@ -21,6 +21,7 @@
 - [15. 3Sum &#11046;](solutions/15.%203Sum/)
 - [49. Group Anagrams &#11046;](solutions/49.%20Group%20Anagrams/)
 - [70. Climbing Stairs](solutions/70.%20Climbing%20Stairs/)
+- [121. Best Time to Buy and Sell Stock &#11046;](solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/)
 - [125. Valid Palindrome &#11046;](solutions/125.%20Valid%20Palindrome/)
 - [128. Longest Consecutive Sequence &#11046;](solutions/128.%20Longest%20Consecutive%20Sequence/)
 - [167. Two Sum II - Input Array Is Sorted](solutions/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted/)
