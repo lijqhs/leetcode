@@ -9,7 +9,7 @@
 Key ideas:
 - buy at `i`, sell at `j`
 - each `price[j]` bigger than `price[i]` is a potential best sell price, record the biggest profit (`prices[j]-prices[i]`)
-- each `price[j]` smaller than `price[i]` is a new buy price, reset `i` to `j`
+- each `price[j]` smaller than `price[i]` is a good buy price, set `i` to `j`
 - iterate `j` to find best sell price, by the way, find a good buy price
 
 ```python

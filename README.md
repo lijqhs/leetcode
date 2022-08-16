@@ -6,7 +6,7 @@
 
 - [1. Two Sum &#11046;](solutions/1.%20Two%20Sum/)
 - [2. Add Two Numbers](solutions/2.%20Add%20Two%20Numbers/)
-- [3. Longest Substring Without Repeating Characters](solutions/3.%20Longest%20Substring%20Without%20Repeating%20Characters/)
+- [3. Longest Substring Without Repeating Characters &#11046;](solutions/3.%20Longest%20Substring%20Without%20Repeating%20Characters/)
 - [4. Median of Two Sorted Arrays](solutions/4.%20Median%20of%20Two%20Sorted%20Arrays/)
 - [5. Longest Palindromic Substring](solutions/5.%20Longest%20Palindromic%20Substring/)
 - [6. Zigzag Conversion](solutions/6.%20Zigzag%20Conversion/)
@@ -49,3 +49,4 @@
   - [11. Container With Most Water &#11046;](solutions/11.%20Container%20With%20Most%20Water/)
 - Sliding Window
   - [121. Best Time to Buy and Sell Stock &#11046;](solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/)
+  - [3. Longest Substring Without Repeating Characters &#11046;](solutions/3.%20Longest%20Substring%20Without%20Repeating%20Characters/)
