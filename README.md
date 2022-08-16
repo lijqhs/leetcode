@@ -14,12 +14,14 @@
 - [8. String to Integer (atoi)](solutions/8.%20String%20to%20Integer%20(atoi)/)
 - [9. Palindrome Number](solutions/9.%20Palindrome%20Number/)
 - [10. Regular Expression Matching](solutions/10.%20Regular%20Expression%20Matching/)
-- [11. Container With Most Water](solutions/11.%20Container%20With%20Most%20Water/)
+- [11. Container With Most Water &#11046;](solutions/11.%20Container%20With%20Most%20Water/)
 - [12. Integer to Roman](solutions/12.%20Integer%20to%20Roman/)
 - [13. Roman to Integer](solutions/13.%20Roman%20to%20Integer/)
 - [14. Longest Common Prefix](solutions/14.%20Longest%20Common%20Prefix/)
+- [15. 3Sum &#11046;](solutions/15.%203Sum/)
 - [49. Group Anagrams &#11046;](solutions/49.%20Group%20Anagrams/)
 - [70. Climbing Stairs](solutions/70.%20Climbing%20Stairs/)
+- [125. Valid Palindrome &#11046;](solutions/125.%20Valid%20Palindrome/)
 - [128. Longest Consecutive Sequence &#11046;](solutions/128.%20Longest%20Consecutive%20Sequence/)
 - [167. Two Sum II - Input Array Is Sorted](solutions/167.%20Two%20Sum%20II%20-%20Input%20Array%20Is%20Sorted/)
 - [217. Contains Duplicate &#11046;](solutions/217.%20Contains%20Duplicate/)
@@ -27,6 +29,7 @@
 - [242. Valid Anagram &#11046;](solutions/242.%20Valid%20Anagram/)
 - [347. Top K Frequent Elements &#11046;](solutions/347.%20Top%20K%20Frequent%20Elements/)
 - [746. Min Cost Climbing Stairs](solutions/746.%20Min%20Cost%20Climbing%20Stairs/)
+
 
 ### Blind 75 List &#11046;
 
@@ -41,3 +44,7 @@
   - [128. Longest Consecutive Sequence &#11046;](solutions/128.%20Longest%20Consecutive%20Sequence/)
 - Two Pointers
   - [125. Valid Palindrome &#11046;](solutions/125.%20Valid%20Palindrome/)
+  - [15. 3Sum &#11046;](solutions/15.%203Sum/)
+  - [11. Container With Most Water &#11046;](solutions/11.%20Container%20With%20Most%20Water/)
+- Sliding Window
+  - [121. Best Time to Buy and Sell Stock &#11046;](solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/)
