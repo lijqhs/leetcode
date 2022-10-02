@@ -19,6 +19,7 @@
 - [13. Roman to Integer](solutions/13.%20Roman%20to%20Integer/)
 - [14. Longest Common Prefix](solutions/14.%20Longest%20Common%20Prefix/)
 - [15. 3Sum *](solutions/15.%203Sum/)
+- [39. Combination Sum *](solutions/39.%20Combination%20Sum/)
 - [49. Group Anagrams *](solutions/49.%20Group%20Anagrams/)
 - [70. Climbing Stairs](solutions/70.%20Climbing%20Stairs/)
 - [121. Best Time to Buy and Sell Stock *](solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/)
@@ -50,6 +51,8 @@
 - Sliding Window
   - [121. Best Time to Buy and Sell Stock *](solutions/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock/)
   - [3. Longest Substring Without Repeating Characters *](solutions/3.%20Longest%20Substring%20Without%20Repeating%20Characters/)
+- Backtracking
+  - [39. Combination Sum *](solutions/39.%20Combination%20Sum/)
 
 
 
