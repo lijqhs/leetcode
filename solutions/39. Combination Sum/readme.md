@@ -46,3 +46,26 @@ class Solution:
             else:
                 continue
 ```
+
+A more efficient approach:
+
+```python
+from typing import List
+
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        path = []
+        all = []
+        self.traverse(candidates, target, path, all)
+        return all
+
+    def traverse(self, candidates: List[int], target: int, path: List[int], all: set) -> List[List[int]]:
+        if target == 0:
+            all.append(path)
+            return
+        if target < 0:
+            return
+
+        for i, n in enumerate(candidates):
+            self.traverse(candidates[i:], target-n, path+[n], all)
+```
